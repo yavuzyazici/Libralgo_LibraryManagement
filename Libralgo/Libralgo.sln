@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36408.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Libralgo", "Libralgo\Libralgo.csproj", "{6831EBBB-D005-42E7-975E-2D6612A6CE17}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6831EBBB-D005-42E7-975E-2D6612A6CE17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6831EBBB-D005-42E7-975E-2D6612A6CE17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6831EBBB-D005-42E7-975E-2D6612A6CE17}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6831EBBB-D005-42E7-975E-2D6612A6CE17}.Debug|x64.Build.0 = Debug|Any CPU
+		{6831EBBB-D005-42E7-975E-2D6612A6CE17}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6831EBBB-D005-42E7-975E-2D6612A6CE17}.Debug|x86.Build.0 = Debug|Any CPU
+		{6831EBBB-D005-42E7-975E-2D6612A6CE17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6831EBBB-D005-42E7-975E-2D6612A6CE17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6831EBBB-D005-42E7-975E-2D6612A6CE17}.Release|x64.ActiveCfg = Release|Any CPU
+		{6831EBBB-D005-42E7-975E-2D6612A6CE17}.Release|x64.Build.0 = Release|Any CPU
+		{6831EBBB-D005-42E7-975E-2D6612A6CE17}.Release|x86.ActiveCfg = Release|Any CPU
+		{6831EBBB-D005-42E7-975E-2D6612A6CE17}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7D3C1B26-876C-4BEE-889B-75C303B7705F}
+	EndGlobalSection
+EndGlobal
