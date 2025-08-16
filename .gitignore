@@ -63,7 +63,6 @@ packages/
 publish/
 out/
 dist/
-wwwroot/lib/
 
 ## Secrets & configs
 appsettings.*.json
@@ -101,7 +100,6 @@ _ReSharper*/
 *.cache
 *.config
 *.db
-/Libralgo
 /Libralgo/Libralgo/obj
 /Libralgo/Libralgo/bin
 /Libralgo/.vs
