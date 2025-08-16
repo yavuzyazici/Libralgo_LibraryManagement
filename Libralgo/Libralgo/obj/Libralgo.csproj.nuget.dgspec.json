@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Github\\libralgo\\Libralgo\\Libralgo\\Libralgo.csproj": {}
+    "E:\\Github\\Libralgo_LibraryManagement\\Libralgo\\Libralgo\\Libralgo.csproj": {}
   },
   "projects": {
-    "E:\\Github\\libralgo\\Libralgo\\Libralgo\\Libralgo.csproj": {
+    "E:\\Github\\Libralgo_LibraryManagement\\Libralgo\\Libralgo\\Libralgo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Github\\libralgo\\Libralgo\\Libralgo\\Libralgo.csproj",
+        "projectUniqueName": "E:\\Github\\Libralgo_LibraryManagement\\Libralgo\\Libralgo\\Libralgo.csproj",
         "projectName": "Libralgo",
-        "projectPath": "E:\\Github\\libralgo\\Libralgo\\Libralgo\\Libralgo.csproj",
+        "projectPath": "E:\\Github\\Libralgo_LibraryManagement\\Libralgo\\Libralgo\\Libralgo.csproj",
         "packagesPath": "C:\\Users\\yavuz\\.nuget\\packages\\",
-        "outputPath": "E:\\Github\\libralgo\\Libralgo\\Libralgo\\obj\\",
+        "outputPath": "E:\\Github\\Libralgo_LibraryManagement\\Libralgo\\Libralgo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

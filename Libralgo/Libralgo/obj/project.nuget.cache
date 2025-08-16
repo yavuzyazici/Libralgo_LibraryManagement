@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+NFaLNOM2Ig=",
+  "dgSpecHash": "mXqk4vvGz6A=",
   "success": true,
-  "projectFilePath": "E:\\Github\\libralgo\\Libralgo\\Libralgo\\Libralgo.csproj",
+  "projectFilePath": "E:\\Github\\Libralgo_LibraryManagement\\Libralgo\\Libralgo\\Libralgo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yavuz\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\yavuz\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
