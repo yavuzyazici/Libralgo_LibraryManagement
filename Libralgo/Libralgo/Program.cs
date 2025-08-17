@@ -1,15 +1,15 @@
-using Libralgo.Context;
-using Microsoft.EntityFrameworkCore;
-using System;
+using Libralgo.Business.Extensions;
+using Libralgo.Data.Context;
+using System.Reflection;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
-var cs = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<LibralgoDbContext>();
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-builder.Services.AddDbContext<LibralgoDbContext>(options =>
-    options.UseSqlServer(cs));
+builder.Services.AddServiceRegistrations();
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
