@@ -1,0 +1,96 @@
+﻿@using Libralgo.Dto.BookDtos
+@model List<BookListDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card my-4">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 px-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h6 class="text-white text-capitalize mb-0">Books Table</h6>
+                        <a href="/admin/books/create" class="btn btn-sm btn-light text-dark fw-bold">
+                            <i class="fas fa-plus me-1"></i> Kitap Ekle
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body px-0 pb-2">
+                <div class="table-responsive p-0">
+                    <table class="table align-items-center justify-content-center mb-0">
+                        <thead>
+                            <tr>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kitap Adı</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Yazar</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Kategori</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Sayfa Sayısı</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Yayın Evi</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Durum</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">İşlem</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var book in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <h6 class="mb-0 fw-bold text-dark">@book.BookName</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        @if (book.Authors != null && book.Authors.Any())
+                                        {
+                                            @foreach (var author in book.Authors)
+                                            {
+                                                <span class="badge rounded-pill bg-gradient-primary text-white me-1">@author.NameSurname</span>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-secondary">Yazar Yok</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (book.Categories != null && book.Categories.Any())
+                                        {
+                                            @foreach (var category in book.Categories)
+                                            {
+                                                <span class="badge rounded-pill bg-info text-dark me-1">@category.CategoryName</span>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-light text-muted">Kategori Yok</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <span class="fw-semibold text-dark">@book.PageCount</span>
+                                        <small class="text-muted">sayfa</small>
+                                    </td>
+                                    <td>
+                                        <span class="fw-semibold text-dark">@book.Publisher.PublisherName</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">Empty</span>
+                                    </td>
+                                    <td>
+                                        <a href="/admin/books/@book.Id" class="btn btn-sm btn-outline-primary me-2">
+                                            <i class="bi bi-pencil-square"></i> Düzenle
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

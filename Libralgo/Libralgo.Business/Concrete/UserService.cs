@@ -13,6 +13,11 @@ namespace Libralgo.Business.Concrete
 {
     public class UserService(IUserDal userDal, IMapper mapper) : IUserService
     {
+        public User GetByMail(string email)
+        {
+            return userDal.GetByMail(email);
+        }
+
         public void TCreate(User entity)
         {
             userDal.Create(entity);

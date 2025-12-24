@@ -1,0 +1,82 @@
+﻿@using Libralgo.Dto.UserDtos
+@model UserLoginDto
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header align-items-start min-vh-100" style="background-image: url('/assets/images/Göl.jpg');">
+    <span class="mask bg-gradient-dark opacity-6"></span>
+    <div class="container my-auto">
+        <div class="row">
+            <div class="col-lg-4 col-md-8 col-12 mx-auto">
+                <div class="card z-index-0 fadeIn3 fadeInBottom">
+                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                        <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
+                            <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">Giriş Yap</h4>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <form asp-action="Login" asp-controller="Login" method="post" class="text-start">
+                            @Html.AntiForgeryToken()
+                            <div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
+
+                            <div class="input-group input-group-outline my-3">
+                                <label asp-for="MailAddress" class="form-label">Mail Adresi</label>
+                                <input asp-for="MailAddress" class="form-control" />
+                            </div>
+                            <span asp-validation-for="MailAddress" class="text-danger"></span>
+
+                            <div class="input-group input-group-outline mb-3">
+                                <label asp-for="Password" class="form-label">Şifre</label>
+                                <input asp-for="Password" class="form-control" type="password" />
+                            </div>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+
+                            <div class="form-check form-switch d-flex align-items-center mb-3">
+                                <input class="form-check-input" asp-for="RememberMe" type="checkbox" id="rememberMe">
+                                <label class="form-check-label mb-0 ms-3" for="rememberMe">Beni hatırla</label>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn bg-gradient-dark w-100 my-3">Giriş</button>
+                            </div>
+
+                            <p class="mt-3 text-sm text-center">
+                                Hesabın yok mu?
+                                <a asp-controller="Login" asp-action="Register" class="text-primary text-gradient fw-bold">Kayıt ol</a>
+                            </p>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.querySelectorAll('.form-control').forEach(function (input) {
+          // Sayfa yüklenince dolu inputları işaretle
+          if (input.value.trim() !== "") {
+            input.parentNode.classList.add("is-filled");
+          }
+
+          // Focus olunca class ekle
+          input.addEventListener("focus", function () {
+            this.parentNode.classList.add("is-focused");
+          });
+
+          // Blur olunca içi boşsa kaldır
+          input.addEventListener("blur", function () {
+            this.parentNode.classList.remove("is-focused");
+            if (this.value.trim() !== "") {
+              this.parentNode.classList.add("is-filled");
+            } else {
+              this.parentNode.classList.remove("is-filled");
+            }
+          });
+        });
+    </script>
+}

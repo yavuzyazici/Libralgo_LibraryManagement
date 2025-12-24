@@ -1,0 +1,96 @@
+﻿@using Libralgo.Dto.UserDtos
+@model UserRegisterDto
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header min-vh-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
+                <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center"
+                     style="background-image: url('/assets/images/book-3692572_1280.jpg'); background-size: cover; background-position: center;">
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
+                <div class="card card-plain">
+                    <div class="card-header">
+                        <h4 class="font-weight-bolder">Kayıt Ol</h4>
+                        <p class="mb-0">Kullanıcı adınızı ve şifrenizi girin</p>
+                    </div>
+
+                    <div class="card-body">
+                        <form asp-action="Register" asp-controller="Login" method="post" role="form">
+                            @Html.AntiForgeryToken()
+                            <div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
+
+                            <div class="input-group input-group-outline mb-3">
+                                <label asp-for="NameSurname" class="form-label">Ad Soyad</label>
+                                <input asp-for="NameSurname" type="text" class="form-control" />
+                            </div>
+                            <span asp-validation-for="NameSurname" class="text-danger"></span>
+
+                            <div class="input-group input-group-outline mb-3">
+                                <label asp-for="MailAddress"  class="form-label">Mail Adresi</label>
+                                <input asp-for="MailAddress" type="email" class="form-control" />
+                            </div>
+                            <span asp-validation-for="MailAddress" class="text-danger"></span>
+
+                            <div class="input-group input-group-outline mb-3">
+                                <label asp-for="Password" class="form-label">Şifre</label>
+                                <input asp-for="Password" class="form-control" type="password" />
+                            </div>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+
+                            <div class="input-group input-group-outline mb-3">
+                                <label asp-for="ConfirmPassword" class="form-label">Şifre (Tekrar)</label>
+                                <input asp-for="ConfirmPassword" class="form-control" type="password" />
+                            </div>
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-lg bg-gradient-dark w-100 mt-3">Kayıt Ol</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="card-footer text-center pt-0 px-lg-2 px-1">
+                        <p class="mb-2 text-sm mx-auto">
+                            Zaten hesabın var mı?
+                            <a asp-controller="Login" asp-action="Login" class="text-primary text-gradient font-weight-bold">Giriş yap</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script>
+        document.querySelectorAll('.form-control').forEach(function (input) {
+          // Sayfa yüklenince dolu inputları işaretle
+          if (input.value.trim() !== "") {
+            input.parentNode.classList.add("is-filled");
+          }
+
+          // Focus olunca class ekle
+          input.addEventListener("focus", function () {
+            this.parentNode.classList.add("is-focused");
+          });
+
+          // Blur olunca içi boşsa kaldır
+          input.addEventListener("blur", function () {
+            this.parentNode.classList.remove("is-focused");
+            if (this.value.trim() !== "") {
+              this.parentNode.classList.add("is-filled");
+            } else {
+              this.parentNode.classList.remove("is-filled");
+            }
+          });
+        });
+    </script>
+}

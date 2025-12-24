@@ -9,5 +9,6 @@ namespace Libralgo.Data.Abstract
 {
     public interface IUserDal : IGenericDal<User>
     {
+        User GetByMail(string email);
     }
 }

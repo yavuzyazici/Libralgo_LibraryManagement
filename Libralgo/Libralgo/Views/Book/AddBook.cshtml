@@ -1,0 +1,151 @@
+﻿@model Libralgo.Dto.BookDtos.BookAddDto
+@{
+    ViewData["Title"] = "AddBook";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section Styles {
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
+
+    <!-- Select2 Bootstrap 5 Theme -->
+    <link href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" rel="stylesheet" />
+}
+<div class="card border-0 shadow-sm">
+    <div class="card-header bg-gradient-dark shadow-dark border-radius-lg py-2 px-3 d-flex justify-content-between align-items-center">
+        <h6 class="text-white mb-0">Yeni Kitap</h6>
+        <a href="/admin/books" class="btn btn-sm btn-light text-dark fw-bold">
+            <i class="fas fa-arrow-left me-1"></i> Geri
+        </a>
+    </div>
+
+    <div class="card-body">
+        <form asp-action="AddBook" asp-controller="Book" method="post">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label asp-for="BookName" class="form-label">Kitap Adı</label>
+                    <input asp-for="BookName" class="form-control" />
+                    <span asp-validation-for="BookName" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-3">
+                    <label asp-for="PageCount" class="form-label">Sayfa</label>
+                    <input asp-for="PageCount" class="form-control" type="number" min="1" />
+                    <span asp-validation-for="PageCount" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-3">
+                    <label asp-for="PublisherId" class="form-label">Yayınevi</label>
+                    <select asp-for="PublisherId" class="form-select"
+                            asp-items="ViewBag.Publishers">
+                        <option value="">-- Seçiniz --</option>
+                    </select>
+                    <span asp-validation-for="PublisherId" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-12">
+                    <label asp-for="Description" class="form-label">Açıklama</label>
+                    <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="AuthorIds"
+                           class="form-label"
+                           style="font-weight:600; color:#333; margin-bottom:6px;">
+                        Yazarlar
+                    </label>
+                    <select asp-for="AuthorIds"
+                            class="form-select select2-authors"
+                            multiple
+                            style="width:100%; padding:8px 12px; border:1px solid #ced4da; border-radius:6px; font-size:14px; background-color:#fff; box-shadow:inset 0 1px 2px rgba(0,0,0,.05);">
+                    </select>
+                    <span asp-validation-for="AuthorIds"
+                          class="text-danger"
+                          style="font-size:12px; margin-top:4px; display:block;">
+                    </span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="CategoryIds"
+                           class="form-label"
+                           style="font-weight:600; color:#333; margin-bottom:6px;">
+                        Kategoriler
+                    </label>
+                    <select asp-for="CategoryIds"
+                            class="form-select select2-categories"
+                            multiple
+                            asp-items="ViewBag.Categories"
+                            style="width:100%; padding:8px 12px; border:1px solid #ced4da; border-radius:6px; font-size:14px; background-color:#fff; box-shadow:inset 0 1px 2px rgba(0,0,0,.05);">
+                    </select>
+                    <span asp-validation-for="CategoryIds"
+                          class="text-danger"
+                          style="font-size:12px; margin-top:4px; display:block;">
+                    </span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="ImageUrl" class="form-label">Kapak URL</label>
+                    <input asp-for="ImageUrl" class="form-control" />
+                    <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="LibraryId" class="form-label">Kütüphane</label>
+                    <select asp-for="LibraryId" class="form-select" asp-items="ViewBag.Libraries">
+                        <option value="">-- Seçiniz --</option>
+                    </select>
+                    <span asp-validation-for="LibraryId" class="text-danger"></span>
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="PublisherId" class="form-label">Yayınevi</label>
+                    <select asp-for="PublisherId" class="form-select"
+                            asp-items="ViewBag.Publishers">
+                        <option value="">-- Seçiniz --</option>
+                    </select>
+                    <span asp-validation-for="PublisherId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="mt-4 d-flex justify-content-end">
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-save me-1"></i> Kaydet
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+                $('.select2-authors').select2({
+          theme: 'bootstrap-5',
+          placeholder: 'Yazar seçiniz',
+          width: '100%',
+          ajax: {
+            url: '/authors/search',
+            dataType: 'json',
+            delay: 250,
+            data: params => ({ query: params.term }),
+            processResults: data => ({ results: data })
+          },
+          minimumInputLength: 2,
+          language: {
+            inputTooShort: () => 'Lütfen en az 2 karakter giriniz',
+            noResults:     () => 'Yazar bulunamadı',
+            searching:     () => 'Aranıyor...'
+          }
+        });
+                    $('.select2-categories').select2({
+          theme: 'bootstrap-5',
+          placeholder: 'Kategori seçiniz',
+          width: '100%',
+          language: { noResults: () => 'Kategori bulunamadı' }
+        });
+    </script>
+}

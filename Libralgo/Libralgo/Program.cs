@@ -1,5 +1,6 @@
 using Libralgo.Business.Extensions;
 using Libralgo.Data.Context;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Reflection;
 
 
@@ -11,6 +12,16 @@ builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddServiceRegistrations();
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(opt =>
+    {
+        opt.LoginPath = "/login";
+        opt.LogoutPath = "/logout";
+        opt.AccessDeniedPath = "/denied";
+        opt.SlidingExpiration = true;
+        opt.ExpireTimeSpan = TimeSpan.FromDays(7);
+    });
 
 var app = builder.Build();
 

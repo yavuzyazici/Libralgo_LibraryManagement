@@ -9,5 +9,6 @@ namespace Libralgo.Business.Abstract
 {
     public interface IUserService : IGenericService<User>
     {
+        User GetByMail(string email);
     }
 }
